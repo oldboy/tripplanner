@@ -4,7 +4,10 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app"
+    "start": "npm run start:dev",
+    "start:dev": "nodemon -e html,css,js app.js",
+    "start:production": "node app.js",
+    "build:css" : "node-sass -w -r assets/stylesheets -o public/stylesheets"
   },
   "keywords": [],
   "author": "Gabriel Lebec <glebec@gmail.com> (https://github.com/glebec)",
@@ -20,7 +23,10 @@
     "volleyball": "^1.4.1"
   },
   "devDependencies": {
+    "node-sass": "^4.4.0",
     "nodemon": "^1.11.0"
   },
   "description": ""
 }
+
+

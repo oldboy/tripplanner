@@ -1,10 +1,68 @@
 {% extends "layout.html" %}
-
 {% block content %}
-<h2>Index Page</h2>
 
-<ul> 
-<li> {{ hotel }} </li>
-</ul>
+
+
+<div class="container" id="rightbox"> 
+<h2> Places </h2>
+<div class = "row">
+
+<div id="col-1">
+<p> Activities: </p>
+<select>
+{% for activity in activities %}
+ <option value="Activity"> {{activity}} </option>
+{% endfor %}
+</select>
+</div>
+
+<div id="col-1">
+<p> Hotel: </p>
+<select>
+{% for hotel in hotels %}
+ <option value="Hotel">{{hotel}}</option>
+{% endfor %}
+</select>
+</div>
+
+<div id="col-1">
+<p > Restaurant </p>
+<select>
+{% for restaurant in restaurants %}
+ <option value="Restaurant">{{restaurant}}</option>
+{% endfor %}
+</select>
+</div>
+
+</div>
+</div>
+
+<div style="clear: both" >
+</div>
+
+<div class="container" id="rightbox"> 
+<div class="row">
+
+<div id="col-2">
+<p> My Hotel </p>
+</div>
+
+<div id="col-2">
+<p> My Hotel </p>
+</div>
+
+<div id="col-2">
+<p> My Hotel </p>
+</div>
+
+</div>
+</div>
+
+<div id="map">
+
+<p> dehnfaknfaognameg </p>
+</div>
+
 
 {% endblock %}
+

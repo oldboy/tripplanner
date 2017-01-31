@@ -1,8 +1,6 @@
 var Sequelize = require('sequelize');
 const db = require('./db');
 
-
-
 var Restaurant = db.define('restaurant', {
 	name: {
 		type: Sequelize.STRING
@@ -17,7 +15,5 @@ var Restaurant = db.define('restaurant', {
 		max: 5
 	}
 });
-
-
 
 module.exports = Restaurant;

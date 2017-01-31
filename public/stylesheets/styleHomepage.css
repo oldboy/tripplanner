@@ -1,0 +1,26 @@
+body {
+  background: url("https://media.giphy.com/media/HR7Q8ESvXQtAA/giphy.gif") no-repeat fixed 50% 50%;
+  font-family: sans-serif;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover; 
+  height: 100%;
+}
+
+a {
+  color: #ffc87a;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  top:70%;
+  font-size: 80px;
+  color: #ffc87a;
+}
+
+div {
+	top: 350px;
+	position: relative;
+}

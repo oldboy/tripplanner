@@ -1,0 +1,32 @@
+body {
+	background: url('https://38.media.tumblr.com/fb583d4c627fc91ce6203f2e8f15e08e/tumblr_nq7p0agVNX1s04zg1o1_500.gif')  fixed 50% 50%;
+	box-sizing: border-box;
+	text-align: center;
+	color: white;
+	/*background-size: cover;*/
+}
+
+
+h1 {
+	color: #ED0A3F;
+	font-family: sans-serif;
+    margin: auto;
+    position: relative;
+    top: 300px;
+    width: 100%;
+    font-size: 70px;
+    animation: change 7s step-end infinite ;
+}
+
+
+@keyframes change {
+	0% {color: #FF6037}
+	15% {color: #66FF66}
+	30% {color: #FF355E}
+	45% {color: white}
+	60% {color: #50BFE6}
+	75% {color: #FF6EFF}
+	90% {color: #FFFF66}
+	100% {color: #1A1110}
+}
+

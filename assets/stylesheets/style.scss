@@ -1,0 +1,78 @@
+
+#background{
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  }
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+h1, h2, div {
+  text-align: left;
+}
+
+#col-1 {
+  width: 33%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#navigation-bar {
+  background: red;
+  margin-top:0px;
+  box-sizing: border-box;
+}
+
+.row {
+ 	width: 100%;
+ }
+
+ #rightbox {
+  width: 20%;
+  float: right;
+  display: block;
+}
+
+.container {
+ width: 100%;
+ float: right;
+ box-sizing: border;
+ display: block;
+ }
+
+
+@media screen and (max-width: 820px) {
+  #col-1 {
+    float: none;
+    width:100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+#background {
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover; 
+  width: 100%;
+}
+
+
+#map {
+  width: 60%;
+  float: left;
+  height:100%;
+}
+
+

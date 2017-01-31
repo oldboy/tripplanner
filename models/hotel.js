@@ -1,7 +1,6 @@
 var Sequelize = require('sequelize');
 const db = require('./db');
 
-
 var Hotel = db.define('hotel', {
 	name: {
 		type: Sequelize.STRING
@@ -14,8 +13,6 @@ var Hotel = db.define('hotel', {
 		}
 	}
 });
-
-
 
 module.exports = Hotel;
 

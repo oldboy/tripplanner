@@ -1,9 +1,22 @@
 <html>
+
+<title>Trip Planner</title>
+
   <head>
-    <title>Trip Planner</title>
+    <link href="stylesheets/style.css" rel='stylesheet'>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/jquery/jquery.min.js" rel="jquery">
+
   </head>
-  <body>
+
+  <body id="background">
+
+  <div id= "navigation-bar" style="margin-top: 0px"> 
+  <h1> Navigation </h1>
+  </div>
+
     <h1>Trip Planner!</h1>
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
   </body>
 </html>
