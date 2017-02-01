@@ -1,19 +1,13 @@
 'use strict';
 
-// built-in modules
 const path = require('path');
-
-// npm packages
 const express = require('express');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 
-// our modules
 const db = require('./models');
 const routes = require('./routes');
-
-// init
 const app = express();
 
 // nunjucks rendering boilerplate
@@ -25,6 +19,7 @@ nunjucks.configure('views', { noCache: true });
 app.use(volleyball);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 
 // routing
 app.use(routes);
@@ -41,22 +36,22 @@ app.use(function (req, res, next) {
 });
 
 app.use(function (err, req, res, next) {
-  // do whatever you want with the error
-  console.log('Mistake. Request cannot be achieved.', err.message);
-  // keep this if you still want Express to ultimately handle the error for you
-  res.render('error');
+  console.error(err, err.stack);
+  res.status(err.status || 500);
+  res.render('error', {
+    status: err.status || 500
+  });
   next(err);
 });
-
 // start
-const PORT = 3000;
-
-db.sync()
-.then(() => {
-  app.listen(PORT, function () {
-    console.log(`Are you watching closely? http://localhost:${PORT}`);
+var port = 3000;
+app.listen(port, function () {
+  console.log('The server is listening closely on port', port);
+  db.sync()
+  .then(function () {
+    console.log('Synchronated the database');
+  })
+  .catch(function (err) {
+    console.error('Trouble right here in River City', err, err.stack);
   });
-})
-.catch(err => {
-  console.error('Error starting app', err);
 });

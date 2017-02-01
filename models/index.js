@@ -1,5 +1,5 @@
 'use strict';
-const db = require('./db');
+var db = require('./_db');
 
 const Place = require('./place');
 const Hotel = require('./hotel');

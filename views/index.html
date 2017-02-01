@@ -1,68 +1,178 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
+
+{% block title %}Your Trip{% endblock %}
+
 {% block content %}
+<div id="app" class="clearfix">
+  <div class="map-container col-sm-8 col-lg-9">
+    <div>
+      <div id="map-canvas"></div>
+    </div>
+  </div>
+  <div id="control-panel" class="col-sm-4 col-lg-3 clearfix">
+    <div class="col-xs-6 col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-body" id="options-panel">
+          <div>
+            <h4>HOTELS</h4>
+            <select data-type="hotel" id="hotel-choices" class="btn btn-secondary dropdown-toggle">
+            </select>
+            <button data-action="add" id="hotelBtn" class="btn btn-primary btn-circle pull-right">+</button>
+          </div>
+          <div>
+            <h4>RESTAURANTS</h4>
+            <select data-type="restaurant" id="restaurant-choices" class="btn btn-secondary dropdown-toggle">
 
+            </select>
+            <button data-action="add" id="restaurantBtn" class="btn btn-primary btn-circle pull-right">+</button>
+          </div>
+          <div>
+            <h4>ACTIVITIES</h4>
+            <select data-type="activity" id="activity-choices" class="btn btn-secondary dropdown-toggle">
 
+            </select>
+            <button data-action="add" id="activitiesBtn" class="btn btn-primary btn-circle pull-right">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-sm-12">
+      <h3>
+        <span id="day-title">
+          <span>Day 2</span>
+          <button class="btn btn-xs btn-danger remove btn-circle" id="button-day-title" >-</button>
+        </span>
+      </h3>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="day-buttons">
+            <button class="btn btn-circle day-btn" id="day1">1</button>
+            <button class="btn btn-circle day-btn current-day" id="day2">2</button>
+            <button class="btn btn-circle day-btn id="day3">3</button>
+            <button class="btn btn-circle day-btn" id="day-add">+</button>
+          </div>
+        </div>
+        <div class="panel-body" id="itinerary">
+          <div>
+            <h4>My Hotel</h4>
+            <ul class="list-group">
+              <div class="itinerary-item" id="hotelPlan">
+                <!-- <span class="title">Andaz Wall Street</span> -->
 
-<div class="container" id="rightbox"> 
-<h2> Places </h2>
-<div class = "row">
-
-<div id="col-1">
-<p> Activities: </p>
-<select>
-{% for activity in activities %}
- <option value="Activity"> {{activity}} </option>
-{% endfor %}
-</select>
+              </div>
+            </ul>
+          </div>
+          <div>
+            <h4>My Restaurants</h4>
+            <ul class="list-group">
+              <div class="itinerary-item" id="restaurantPlan">
+                <!-- <span class="title">Bouley</span>
+                <button class="btn btn-xs btn-danger remove btn-circle">x</button> -->
+              </div>
+            </ul>
+          </div>
+          <div>
+            <h4>My Activities</h4>
+            <ul class="list-group">
+              <div class="itinerary-item" id="activityPlan">
+                <!-- <span class="title">Mahayana Buddhist Temple Association</span>
+                <button class="btn btn-xs btn-danger remove btn-circle">x</button> -->
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<script>
+  const hotels = {{ hotels | dump | safe }};
+  const restaurants = {{ restaurants | dump | safe }};
+  const activities = {{ activities | dump | safe }};
 
-<div id="col-1">
-<p> Hotel: </p>
-<select>
-{% for hotel in hotels %}
- <option value="Hotel">{{hotel}}</option>
-{% endfor %}
-</select>
-</div>
+  const $hotelBtn = $('#hotelBtn');
+  const $restaurantBtn = $('#restaurantBtn');
+  const $activitiesBtn = $('#activitiesBtn');
 
-<div id="col-1">
-<p > Restaurant </p>
-<select>
-{% for restaurant in restaurants %}
- <option value="Restaurant">{{restaurant}}</option>
-{% endfor %}
-</select>
-</div>
+  const $restaurantChange = $('#restaurant-choices');
+  const $hotelChange = $('#hotel-choices');
+  const $activityChange = $('#activity-choices');
+  var hotelArray = [];
 
-</div>
-</div>
+  var $hotelList = $('#hotelPlan');
+  var $restaurantList = $('#restaurantPlan');
+  var $activityList = $('#activityPlan');
 
-<div style="clear: both" >
-</div>
+  let $newRestaurant;
+    for(var i = 0; i < hotels.length; i++){
+      $("#hotel-choices").append('<option value="' + hotels[i].name + '" id="hotel-options">' + hotels[i].name + '</option>');
+    }
+    for(var i = 0; i < restaurants.length; i++){
+      $("#restaurant-choices").append('<option value="' + restaurants[i].name + '" id="restaurants-options">' + restaurants[i].name + '</option>');
+    }
+    for(var i = 0; i < activities.length; i++){
+      $("#activity-choices").append('<option value="' + activities[i].name + '" id="activities-options">' + activities[i].name + '</option>');
+    }
 
-<div class="container" id="rightbox"> 
-<div class="row">
+    $hotelBtn.on('click', function(){
+      console.log('hello')
+      if (hotelArray.indexOf($newHotel) === -1) {
+        $("#hotelPlan").append('<span class="title" id="hotelToday">' + $newHotel + '</span>' + '<button class="btn btn-xs btn-danger remove btn-circle" id="rmBtnHotel" value="'+ $newHotel +'">x</button>');
+        hotelArray.push($newHotel);
+      }
+    });
 
-<div id="col-2">
-<p> My Hotel </p>
-</div>
+    $hotelChange.change(function() {
+      $newHotel = jQuery(this).val();
+    })
 
-<div id="col-2">
-<p> My Hotel </p>
-</div>
+    $restaurantBtn.on('click', function() {
 
-<div id="col-2">
-<p> My Hotel </p>
-</div>
+      $('#restaurantPlan').append('<span class="title" id="restaurantToday">' + $newRestaurant + '</span>' + '<button class="btn btn-xs btn-danger remove btn-circle" id="rmBtnRestaurant">x</button>')
+    })
 
-</div>
-</div>
+    $restaurantChange.change( function(){
+      $newRestaurant = jQuery(this).val();
+    });
 
-<div id="map">
+    $activityChange.change(function() {
+      $newActivity = jQuery(this).val();
+    })
 
-<p> dehnfaknfaognameg </p>
-</div>
+    $activitiesBtn.on('click', function() {
+      $('#activityPlan').append('<span class="title" id="activityToday">' + $newActivity + '</span>' + '<button class="btn btn-xs btn-danger remove btn-circle" id="rmBtnActivity">x</button>')
+    })
+
+    $hotelList.on('click', 'button', function() {
+      console.log($(this).val())
+      $('#hotelPlan').children('#rmBtnHotel').remove()
+      $('#hotelPlan').children('#hotelToday').remove()
+
+      console.log(hotelArray)
+      hotelArray.splice(hotelArray.indexOf($(this).val()), 1);
+      console.log(hotelArray);
+    });
+
+     $restaurantList.on('click', 'button', function() {
+      // console.log($(this).val())
+      $('#restaurantPlan').children('#rmBtnRestaurant').remove()
+      $('#restaurantPlan').children('#restaurantToday').remove()
+
+      
+     });
+
+     $activityList.on('click', 'button', function() {
+      $('#activityPlan').children('#rmBtnActivity').remove()
+      $('#activityPlan').children('#activityToday').remove()
+
+    // $('.panel').on('click', function() {
+    //   console.log("New Day Baby!")
+    // })
+      
+     });
 
 
+
+
+</script>
 {% endblock %}
-

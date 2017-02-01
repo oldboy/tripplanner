@@ -1,78 +1,266 @@
+$light-yellow: #FFDD1B;
+$white: white;
+$transparent: rgba(0,0,0,0);
+$red: red;
 
-#background{
-  background-color: black;
-  color: white;
-  font-family: sans-serif;
-  background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover;
+$screen-sm: 768px;
+
+body {
+  padding-top: 50px;
+  background: lighten($white, 32%);
+  font-family: 'Varela Round', sans-serif;
+  min-width: -webkit-min-content;
+}
+
+h2 {
+  font-family: Pacifico;
+  font-size: 100px;
+  color: #228DFF;
+}
+
+
+
+#app {
+  border-left: 2px solid lighten($white, 25%);
+  border-right: 2px solid lighten($white, 25%);
+}
+
+.navbar-inverse {
+  background-color: white;
+  .navbar-toggle .icon-bar {
+    background-color: $light-yellow;
   }
-
-html {
-  height: 100%;
-  width: 100%;
+  height: 70px;
 }
 
-h1, h2, div {
-  text-align: left;
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
+  color: $light-yellow;
 }
 
-#col-1 {
-  width: 33%;
+.navbar-inverse .navbar-brand {
+  padding: 12px 15px;
+  white-space: nowrap;
+  .glyphicon {
+    font-size: 1.2em;
+    margin-right: 5px;
+  }
+  > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+  }
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  box-shadow: inset 0 0 10px ($white, 15%);
+  background: ($white, 5%);
+  color: lighten($light-yellow, 10%);
+  &:hover {
+    background: ($white, 10%);
+    box-shadow: inset 0 0 10px ($white, 20%);
+    color: #fff;
+  }
+}
+
+#map-canvas {
+  height: calc(100vh - 20px);
+  border-right: 2px solid lighten($white, 25%);
+  border-bottom: 2px solid lighten($white, 25%);
+  border-left: 2px solid lighten($white, 25%);
+  width:100%;
+}
+
+@media (min-width: $screen-sm) {
+  #map-canvas {
+    border-bottom: none;
+    border-left: none;
+  }
+  .map-container {
+    padding: 0;
+    > div {
+      position: fixed;
+      width: inherit;
+    }
+  }
+}
+
+#control-panel {
+  padding: 0;
+  box-sizing: border-box;
+  > div {
+    margin: 20px 0;
+    min-width: -webkit-min-content;
+  }
+}
+
+select {
+  width: calc(100% - 25px);
+  -webkit-appearance: menulist-button;
+}
+
+.btn-primary {
+  background: $light-yellow;
+  border-color: $light-yellow;
+  &:hover {
+    background: $light-yellow;
+    border-color: $light-yellow;
+  }
+}
+
+h4 {
+  color:  red;
   text-align: center;
-  box-sizing: border-box;
+  margin-top: 0;
+  font-family: Iceland;
 }
 
-#navigation-bar {
-  background: red;
-  margin-top:0px;
-  box-sizing: border-box;
-}
 
-.row {
- 	width: 100%;
- }
-
- #rightbox {
-  width: 20%;
-  float: right;
-  display: block;
-}
-
-.container {
- width: 100%;
- float: right;
- box-sizing: border;
- display: block;
- }
-
-
-@media screen and (max-width: 820px) {
-  #col-1 {
-    float: none;
-    width:100%;
+h3 {
+  color:  #FF9900;
     text-align: center;
-    box-sizing: border-box;
+
+  text-align: center;
+  margin-top: 0;
+  font-family: Iceland;
+
+}
+
+.btn-circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 42%;
+  background-color: red;
+  border-color: red;
+  &:hover {
+    background-color: #FFDD1B;
+    border-color: #FFDD1B;
+    transition-duration: 0.5s;
   }
 }
 
-#background {
-  background-color: black;
-  color: white;
-  font-family: sans-serif;
-  background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  -webkit-background-size: cover; 
-  width: 100%;
+.day-btn {
+  border-width: 2px;
+  width: 30px;
+  height: 30px;
+  padding: 5px 5px;
+  background: $transparent;
+  border-color: $light-yellow;
+  color: $light-yellow;
+  &:hover {
+    border-color: #fff;
+    color: #fff;  
+    transition-duration: 0.15s;
+
+  }
+  &.current-day {
+    background: $light-yellow;
+    color: $white;
+    &:hover {
+      background: #fff;
+      transition-duration: 0.15s;
+    }
+  }
+}
+
+.day-buttons {
+  text-align: center;
 }
 
 
-#map {
-  width: 60%;
-  float: left;
-  height:100%;
+
+.panel-default {
+  background: lighten($white, 53%);
+  border-radius: 8px;
+  border-width: 0;
+  margin-bottom: 0;
+  .panel-heading {
+    background: $white;
+    border-radius: 8px 8px 0 0;
+  }
+  .panel-body {
+    padding: 5px 15px;
+    > div {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
 }
 
+.itinerary-item {
+  margin: 8px 0;
+  > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  > .title {
+    width: calc(100% - 24px);
+  }
+  > .remove {
+    width: 20px;
+  }
+}
 
+#day-title {
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid $white;
+  border-radius: 5px;
+  > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  > .remove {
+    margin-left: 1em;
+  }
+  color: red;
+}
+
+#button-day-title {
+border-color: red;
+background-color: red;
+&:hover {
+  background-color: #FFDD1B;
+  border-color: red;
+  color: red;
+}
+}
+
+#todayList {
+  margin: 2px;
+}
+
+@keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
+}
+
+.rainbow {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  font-size: 100px;
+  cursor: pointer;
+  border: none;
+  font: normal normal bold 70px/normal "Bad Script", Helvetica, sans-serif;
+  color: rgba(0, 0, 0, 0);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 3px 0 0 rgb(217,31,38) , 6px 0 0 rgb(226,91,14) , 9px 0 0 rgb(245,221,8) , 12px 0 0 rgb(5,148,68) , 15px 0 0 rgb(2,135,206) , 18px 0 0 rgb(4,77,145) , 21px 0 0 rgb(42,21,113) ;
+  -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -moz-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -o-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+#activityToday, #restaurantToday, #hotelToday {
+  margin: 2px;
+}

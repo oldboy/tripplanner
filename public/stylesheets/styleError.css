@@ -1,11 +1,13 @@
 body {
-	background: url('https://38.media.tumblr.com/fb583d4c627fc91ce6203f2e8f15e08e/tumblr_nq7p0agVNX1s04zg1o1_500.gif')  fixed 50% 50%;
+	background: url('https://media.giphy.com/media/8NZnI022EZa/giphy.gif') fixed 50% 50%;
 	box-sizing: border-box;
 	text-align: center;
 	color: white;
-	/*background-size: cover;*/
+	background-size: cover;
 }
 
+/*Trippy Gif : https://38.media.tumblr.com/fb583d4c627fc91ce6203f2e8f15e08e/tumblr_nq7p0agVNX1s04zg1o1_500.gif*/
+/*TRippy Cat: http://33.media.tumblr.com/tumblr_lp5t4k5sCr1qce386o1_500.gif*/
 
 h1 {
 	color: #ED0A3F;
@@ -13,6 +15,7 @@ h1 {
     margin: auto;
     position: relative;
     top: 300px;
+    /*top: 50px;*/
     width: 100%;
     font-size: 70px;
     animation: change 7s step-end infinite ;
@@ -30,3 +33,13 @@ h1 {
 	100% {color: #1A1110}
 }
 
+
+img {
+	width: 200px;
+	height: 200px;
+	margin-top: 100px;
+}
+
+a {
+	text-decoration: none;
+}

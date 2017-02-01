@@ -1,13 +1,9 @@
 var Sequelize = require('sequelize');
-const db = require('./db');
+var db = require('./_db');
 
 var Activity = db.define('activity', {
-	name: {
-		type: Sequelize.STRING
-	},
-	age_range: {
-		type: Sequelize.STRING
-	}
+  name: Sequelize.STRING,
+  age_range: Sequelize.STRING
 });
 
-module.exports = Activity;
+module.exports = Activity
